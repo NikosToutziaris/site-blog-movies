@@ -1,0 +1,54 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<br class="post">
+    {% if post.published_date %}
+        <div class="date">
+            {{ post.published_date }}
+        </div>
+    {% endif %}
+    <style>
+            h1 {
+                color: #000000 /* */
+            }
+            i  {
+                color: #ff0000; /* */
+            }
+        </style>
+
+    <h1>{{ post.movie_details.title }}</h1>
+    <p>
+        Image:</br> {% if post.movie_details.image %}
+                    <img src="{{ post.movie_details.image.url}}"/>
+                    {{ post.text|linebreaks }}
+               {% endif %}
+    </p>
+</br>
+    <p>{{ post.text|linebreaks }}</p>
+    <p><b> Title: </b><i>{{post.movie_details.title}}</i></p>
+    <p><b> Duration:</b> <i>{{ post.movie_details.duration }}</i></p>
+    <p><b> Movie Kind:</b> <i>{{ post.movie_details.movie_kind }}</i></p>
+    <p><b> Language:</b> <i>{{ post.movie_details.language }}</i></p>
+    <p>
+        <b> Director</b>:
+        <i>
+            <a href="{% url 'movie_director' pk=post.pk %}">
+                {{ post.movie_details.movie_director.name }}
+                {{ post.movie_details.movie_director.surname }}
+            </a>
+        </i>
+    </p>
+    <p><b> First Screening Date:</b>
+        <i>{{ post.movie_details.first_screening_date}}</i>
+    </p>
+    <p><b> Grading:</b> <i>{{ post.movie_details.grading }}</i></p>
+    <p><b> IMDB Grading:</b> <i>{{ post.movie_details.imdb_grading }}</i></p>
+    <p><b> IMDB Summary:</b> <i>{{ post.movie_details.imdb_summary }}</i></p>
+    <p><b> Review:</b> <i>{{ post.movie_details.review }}</i></p>
+
+    </br>
+    <p> <b>Written by</b> <i>{{ post.author }}</i></p>
+</div>
+
+{% endblock %}

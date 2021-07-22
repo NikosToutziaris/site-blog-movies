@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="post">
+        <style>
+            h1, h3 {
+                color: #000000 /* */
+            }
+            i {
+                color: #00ff80; /* */
+
+            }
+        </style>
+        <h1>{{ post.movie_director.name }}{{ post.movie_director.surname }}</h1>
+        <p>{{ post.text|linebreaks }}</p>
+        <h1> Name: </h1><i>{{ post.name }} {{ post.surname }}</i>
+        <h3> Sex:</h3><i> {{ post.sex }}</i>
+        <h3> Nationality:</h3> <i>{{ post.nationality }}</i>
+        <h3> Birthday: </h3> <i>{{ post.birthday }}</i>
+        <h3> Resume: </h3> <i>{{ post.resume }}</i>
+    </div>
+{% endblock %}
